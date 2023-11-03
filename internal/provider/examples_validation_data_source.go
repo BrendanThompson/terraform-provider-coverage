@@ -120,7 +120,7 @@ func findMissingTests(examplesDirectory string, testsDirectory string, filter st
 	var sourceFilter = `source = "./examples`
 	var examples []string
 	var tests []string
-	var missing []string
+	var missing []string = []string{}
 
 	files, err := os.ReadDir(examplesDirectory)
 	if err != nil {
@@ -129,7 +129,6 @@ func findMissingTests(examplesDirectory string, testsDirectory string, filter st
 
 	for _, file := range files {
 		if file.IsDir() {
-			// tflog.Info(ctx, file.Name())
 			examples = append(examples, file.Name())
 		}
 	}
